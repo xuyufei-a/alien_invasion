@@ -12,12 +12,11 @@ class Ship:
         self.image = pygame.image.load("images/ship.bmp")
         self.rect = self.image.get_rect()
 
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.center_ship()
 
         self.moving_right = False
         self.moving_left = False
 
-        self.x = float(self.rect.x)
 
     def blitme(self):
         """在指定位置绘制飞船"""
@@ -31,3 +30,9 @@ class Ship:
             self.x -= self.settings.ship_speed
 
         self.rect.x = self.x
+
+    def center_ship(self):
+        """将飞船置于屏幕底部居中"""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
+
