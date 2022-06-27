@@ -49,7 +49,7 @@ class AlienInvasion:
         """响应鼠标和按键事件"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit()
+                self._quit_game()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
@@ -61,7 +61,7 @@ class AlienInvasion:
     def _check_keydown_event(self, event):
         """响应按键"""
         if event.key == pygame.K_q:
-            sys.exit()
+            self._quit_game()
         elif self.stats.game_active:
             if event.key == pygame.K_RIGHT:
                 self.ship.moving_right = True
@@ -103,6 +103,9 @@ class AlienInvasion:
         self.score_board.prep_ships()
         pygame.mouse.set_visible(False)
 
+    def _quit_game(self):
+        self.stats.write_high_score()
+        sys.exit()
 
     def _create_fleet(self):
         """创建外星人群"""

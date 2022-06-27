@@ -14,7 +14,7 @@ class Settings:
         self.bullet_color = (60, 60, 60)
         self.bullet_allowed = 3
 
-        self.fleet_drop_speed = 1000
+        self.fleet_drop_speed = 10
         self.fleet_direction = 1
 
         self.speedup_scale = 1.1
